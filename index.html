@@ -188,8 +188,11 @@
     <section id="projects" class="py-20 sm:py-32 bg-[#F8F9FA]">
         <!-- ... (기존 Projects 섹션 내용과 동일) ... -->
         <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-            <h2 class="text-3xl sm:text-4xl font-bold text-center mb-4 scroll-reveal">Other Projects</h2>
-            <p class="text-center text-gray-600 max-w-2xl mx-auto mb-12 scroll-reveal delay-100">
+            <div class="text-center scroll-reveal">
+                <h2 class="text-3xl sm:text-4xl font-bold">Other Projects</h2>
+                <a href="projects.html" class="mt-2 inline-block text-blue-600 hover:text-blue-800 transition-colors">모든 프로젝트 보기 &rarr;</a>
+            </div>
+            <p class="text-center text-gray-600 max-w-2xl mx-auto mt-4 mb-12 scroll-reveal delay-100">
                 각 프로젝트는 문제 정의부터 해결까지의 여정을 담은 하나의 케이스 스터디입니다. 저의 생각의 흐름과 문제 해결 방식을 엿볼 수 있습니다.
             </p>
             <!-- Filter Buttons -->
@@ -286,9 +289,39 @@
     
     <!-- CONTACT, MODAL, FOOTER, SCRIPT -->
     <!-- ... (기존 내용과 동일) ... -->
-    <section id="contact" class="py-20 sm:py-32 scroll-reveal"><!-- ... --></section>
-    <div id="project-modal" class="fixed inset-0 bg-black bg-opacity-70 hidden items-center justify-center p-4 z-[100] opacity-0"><!-- ... --></div>
-    <footer class="bg-white/70 border-t border-gray-200"><!-- ... --></footer>
+    <section id="contact" class="py-20 sm:py-32 bg-white">
+        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+            <h2 class="text-3xl sm:text-4xl font-bold scroll-reveal">Get In Touch</h2>
+            <p class="mt-4 max-w-2xl mx-auto text-lg text-gray-600 scroll-reveal delay-100">
+                새로운 기회에 대해 이야기하거나 궁금한 점이 있으신가요? 언제든지 편하게 연락주세요.
+            </p>
+            <div class="mt-10 scroll-reveal delay-200">
+                <a href="mailto:hello@example.com" class="inline-block bg-blue-600 text-white font-semibold px-8 py-4 rounded-md shadow-md hover:bg-blue-700 transition-all duration-300 transform hover:scale-105 text-lg">
+                    hello@example.com
+                </a>
+            </div>
+            <div class="mt-12 flex justify-center space-x-6 scroll-reveal delay-300">
+                <a href="#" class="text-gray-500 hover:text-blue-600 transition-colors">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path></svg>
+                </a>
+                <a href="#" class="text-gray-500 hover:text-blue-600 transition-colors">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path><rect x="2" y="9" width="4" height="12"></rect><circle cx="4" cy="4" r="2"></circle></svg>
+                </a>
+            </div>
+        </div>
+    </section>
+    <div id="project-modal" class="fixed inset-0 bg-black bg-opacity-70 hidden items-center justify-center p-4 z-[100] opacity-0">
+        <!-- 모달 내용은 여기에 채워집니다. -->
+    </div>
+    <footer class="bg-gray-100 border-t border-gray-200">
+        <div class="max-w-6xl mx-auto py-6 px-4 sm:px-6 lg:px-8 flex flex-col sm:flex-row justify-between items-center text-sm text-gray-500">
+        <div class="max-w-6xl mx-auto py-6 px-4 sm:px-6 lg:px-8 flex flex-col sm:flex-row justify-between items-start sm:items-center text-sm text-gray-500">
+            <p>&copy; 2024 Jang Young-woong. All Rights Reserved.</p>
+            <div class="mt-4 sm:mt-0">
+                <a href="#" class="hover:text-blue-600 transition-colors">Back to Top &uarr;</a>
+            </div>
+        </div>
+    </footer>
     <script>
         // --- 네비게이션바 스크롤 그림자 효과 ---
         const nav = document.querySelector('nav');
@@ -437,7 +470,7 @@
     
     <!-- CONTACT, MODAL, FOOTER, SCRIPT -->
     <!-- ... (기존 내용과 동일) ... -->
-    <section id="contact" class="py-20 sm:py-32 section-fade-in"><!-- ... --></section>
+
     <div id="project-modal" class="fixed inset-0 bg-black bg-opacity-70 hidden items-center justify-center p-4 z-[100] opacity-0"><!-- ... --></div>
     <footer class="bg-white/70 border-t border-gray-200"><!-- ... --></footer>
     <script>
