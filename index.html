@@ -5,6 +5,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>IFrame 버전 - OOO 포트폴리오</title>
     <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/typed.js@2.0.12"></script>
     <style>
         /* Pretendard 폰트 추가 */
@@ -18,7 +20,7 @@
                 linear-gradient(90deg, rgba(200, 210, 225, 0.4) 1px, transparent 1px);
             background-size: 25px 25px;
         }        
-        .scroll-reveal { opacity: 0; transform: translateY(20px); transition: opacity 0.6s ease-out, transform 0.6s ease-out; }
+        .scroll-reveal { opacity: 0; transform: translateY(20px); }
         .scroll-reveal.visible { opacity: 1; transform: translateY(0); }
         .delay-100 { transition-delay: 100ms; }
         .delay-200 { transition-delay: 200ms; }
@@ -180,23 +182,22 @@
 
             <div class="mt-16 grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
                 <div class="order-2 lg:order-1 scroll-reveal">
-                    <h3 class="text-2xl font-bold text-gray-900">데이터 시각화 대시보드</h3>
+                    <h3 class="text-2xl font-bold text-gray-900">카제로스 레이드 웹 리디자인</h3>
                     <p class="mt-4 text-gray-600 leading-relaxed">
-                        복잡한 데이터를 사용자가 쉽게 이해하고 인사이트를 얻을 수 있도록 설계한 반응형 웹 대시보드입니다. 
-                        사용자 리서치를 통해 핵심 지표를 정의하고, D3.js를 활용하여 인터랙티브한 차트를 구현했습니다.
+이 프로젝트는 게임 '로스트아크'의 '카제로스 레이드' 업데이트를 주제로 한 인터랙티브 단일 페이지 웹사이트입니다. 사용자가 스크롤하며 콘텐츠를 탐색할 때 동적인 애니메이션과 시각 효과를 통해 몰입감 높은 경험을 제공하는 것을 목표로 제작되었습니다. 최신 웹 기술을 활용하여 사용자의 상호작용에 즉각적으로 반응하고, 다양한 화면 크기에서도 콘텐츠가 아름답게 보일 수 있도록 반응형으로 설계되었습니다.
                     </p>
                     <ul class="mt-6 space-y-3 text-gray-700">
                         <li class="flex items-start">
                             <svg class="flex-shrink-0 h-6 w-6 text-blue-500" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
-                            <span class="ml-3">실시간 데이터 연동 및 동적 차트 생성</span>
+                            <span class="ml-3">GSAP (GreenSock Animation Platform) & ScrollTrigger</span>
                         </li>
                         <li class="flex items-start">
                             <svg class="flex-shrink-0 h-6 w-6 text-blue-500" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
-                            <span class="ml-3">다양한 필터와 정렬 기능으로 데이터 탐색 지원</span>
+                            <span class="ml-3">Intersection Observer API</span>
                         </li>
                         <li class="flex items-start">
                             <svg class="flex-shrink-0 h-6 w-6 text-blue-500" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
-                            <span class="ml-3">모바일 환경에서도 최적화된 반응형 UI/UX</span>
+                            <span class="ml-3">순수 JavaScript 기반 슬라이더 및 반응형 처리</span>
                         </li>
                     </ul>
                     <a href="#" class="mt-8 inline-block bg-blue-600 text-white font-semibold px-6 py-3 rounded-md shadow-md hover:bg-blue-700 transition-colors duration-300 open-modal-btn"
@@ -220,7 +221,7 @@
                                 <div class="w-3 h-3 bg-green-500 rounded-full"></div>
                             </div>
                         </div>
-                        <iframe src="https://jang-da.github.io/wen.jang/#featured-project" class="w-full h-96 border-0" title="Featured Project Preview"></iframe>
+                        <iframe src="https://jang-da.github.io/1103-ver2/" class="w-full h-96 border-0" title="Featured Project Preview"></iframe>
                         <!-- 프레임 다시 넣기 -->
                     </div>
                 </div>
@@ -246,88 +247,8 @@
                 <button class="filter-btn" data-filter="ux/ui">ux/ui</button>
                 <button class="filter-btn" data-filter="photo">photo</button>
             </div>
-            <div id="project-grid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 ">
-                <!-- 프로젝트 B (UX/UI) -->
-                <a href="#" class="project-card group block bg-white rounded-lg shadow-lg overflow-hidden transform hover:-translate-y-2 transition-transform duration-300 hover:shadow-xl open-modal-btn scroll-reveal"
-                   data-category="ux/ui"
-                   data-title="프로젝트 B: 커뮤니티 앱 리디자인"
-                   data-image="https://placehold.co/800x500/DEB8A9/FFF?text=Project+B+Detail"
-                   data-description="기존 커뮤니티 앱의 낮은 사용자 참여도를 개선하기 위해 리디자인을 진행했습니다. 사용자 인터뷰와 설문조사를 통해 문제점을 도출하고, 이를 바탕으로 정보 구조와 UI를 전면 개편했습니다."
-                   data-process="프로젝트 매니저 및 디자이너 역할을 수행했습니다. Figma를 사용하여 프로토타입을 제작하고, 개발팀과 긴밀하게 협업하여 디자인의 의도가 정확히 구현되도록 했습니다. 결과적으로 리디자인 후 사용자 재방문율이 25% 증가했습니다."
-                   data-tags='["User Research", "Figma", "Prototyping", "Mobile App"]'
-                   data-timeline="2024.10 - 2024.12 (3개월)"
-                   data-link="#">
-                    <div class="relative">
-                        <div class="absolute inset-0 bg-black bg-opacity-0 group-hover:bg-opacity-60 transition-all duration-300 flex items-center justify-center z-10">
-                            <div class="text-white text-center opacity-0 group-hover:opacity-100 transition-opacity duration-300 transform translate-y-4 group-hover:translate-y-0">
-                                <h3 class="text-xl font-bold">View Case Study</h3>
-                                <p class="text-sm">자세한 내용을 확인하세요 &rarr;</p>
-                            </div>
-                        </div>
-                        <img src="https://placehold.co/600x400/DEB8A9/FFF?text=Project+B" alt="프로젝트 2 이미지" class="w-full h-auto object-cover group-hover:scale-105 transition-transform duration-300">
-                    </div>
-                    <div class="p-6">
-                        <h3 class="text-xl font-bold mb-2">프로젝트: 로스트아크 카제로스 이벤트 리디자인</h3>
-                        <p class="text-gray-600 text-sm mb-4">사용자 리서치를 통해 주요 문제점을 파악하고, 핵심 기능의 사용성을 개선하여 이탈률을 감소시켰습니다.</p>
-                        <div class="flex flex-wrap gap-2">
-                            <span class="bg-gray-200 text-xs px-2 py-1 rounded-full">User Research</span>
-                            <span class="bg-gray-200 text-xs px-2 py-1 rounded-full">Figma</span>
-                            <span class="bg-gray-200 text-xs px-2 py-1 rounded-full">Prototyping</span>
-                        </div>
-                    </div>
-                </a>
-                <!-- 프로젝트 C (Web) -->
-                <a href="#" class="project-card group block bg-white rounded-lg shadow-lg overflow-hidden transform hover:-translate-y-2 transition-transform duration-300 hover:shadow-xl open-modal-btn scroll-reveal delay-100"
-                   data-category="web"
-                   data-title="프로젝트 C: 밀리의 서재 "
-                   data-image="https://placehold.co/800x500/A9DEB8/FFF?text=Project+C+Detail"
-                   data-description="Vue.js와 Tailwind CSS를 사용하여 빠르고 반응성이 뛰어난 이커머스 플랫폼을 구축했습니다. 상품 목록, 장바구니, 결제 시스템 등 핵심 기능을 구현했습니다."
-                   data-process="프론트엔드 개발 전반을 담당했습니다. 컴포넌트 기반 아키텍처를 설계하여 코드의 재사용성과 유지보수성을 높였습니다. Lighthouse 점수를 90점 이상으로 유지하며 성능 최적화에 집중했습니다."
-                   data-tags='["Vue.js", "Tailwind CSS", "E-commerce", "Frontend"]'
-                   data-timeline="2024.07 - 2024.09 (3개월)"
-                   data-link="#">
-                    <div class="relative">
-                        <div class="absolute inset-0 bg-black bg-opacity-0 group-hover:bg-opacity-60 transition-all duration-300 flex items-center justify-center z-10">
-                            <div class="text-white text-center opacity-0 group-hover:opacity-100 transition-opacity duration-300 transform translate-y-4 group-hover:translate-y-0">
-                                <h3 class="text-xl font-bold">View Case Study</h3>
-                                <p class="text-sm">자세한 내용을 확인하세요 &rarr;</p>
-                            </div>
-                        </div>
-                        <img src="https://placehold.co/600x400/A9DEB8/FFF?text=Project+C" alt="프로젝트 3 이미지" class="w-full h-auto object-cover group-hover:scale-105 transition-transform duration-300">
-                    </div>
-                    <div class="p-6">
-                        <h3 class="text-xl font-bold mb-2">프로젝트: 밀리의 서재</h3>
-                        <p class="text-gray-600 text-sm mb-4">Vue.js 기반의 반응형 이커머스 플랫폼을 구축하여 사용자 경험과 성능을 동시에 개선했습니다.</p>
-                        <div class="flex flex-wrap gap-2">
-                            <span class="bg-gray-200 text-xs px-2 py-1 rounded-full">Vue.js</span>
-                            <span class="bg-gray-200 text-xs px-2 py-1 rounded-full">Frontend</span>
-                            <span class="bg-gray-200 text-xs px-2 py-1 rounded-full">Web</span>
-                        </div>
-                    </div>
-                </a>
-                <!-- 프로젝트 D (Photo) -->
-                <a href="#" class="project-card group block bg-white rounded-lg shadow-lg overflow-hidden transform hover:-translate-y-2 transition-transform duration-300 hover:shadow-xl open-modal-btn scroll-reveal delay-200"
-                   data-category="photo"
-                   data-title="프로젝트 D: ART DOT"
-                   data-image="https://placehold.co/800x500/C7A9DE/FFF?text=Project+D+Detail"
-                   data-description="도시의 야경과 건축물이 만들어내는 빛의 패턴을 주제로 한 사진 시리즈입니다. 장노출 기법을 활용하여 빛의 궤적을 담아냈습니다."
-                   data-process="기획, 촬영, 후보정 전 과정을 직접 진행했습니다. Adobe Lightroom과 Photoshop을 사용하여 각 사진의 색감과 구성을 섬세하게 조정하여 주제를 효과적으로 표현했습니다."
-                   data-tags='["Photography", "Adobe Lightroom", "Art Direction"]'
-                   data-timeline="2024.05 - 2024.06 (2개월)"
-                   data-link="#">
-                    <div class="relative">
-                        <img src="https://placehold.co/600x400/C7A9DE/FFF?text=Project+D" alt="프로젝트 4 이미지" class="w-full h-auto object-cover group-hover:scale-105 transition-transform duration-300">
-                    </div>
-                    <div class="p-6">
-                        <h3 class="text-xl font-bold mb-2">프로젝트: ART DOT</h3>
-                        <p class="text-gray-600 text-sm mb-4">장노출 사진을 통해 도시의 동적인 아름다움을 포착하고, 빛을 이용해 감성적인 분위기를 연출했습니다.</p>
-                        <div class="flex flex-wrap gap-2">
-                            <span class="bg-gray-200 text-xs px-2 py-1 rounded-full">Photography</span>
-                            <span class="bg-gray-200 text-xs px-2 py-1 rounded-full">Art Direction</span>
-                        </div>
-                    </div>
-                </a>
-            </div>
+            <!-- 프로젝트 카드가 동적으로 여기에 삽입됩니다. -->
+            <div id="project-grid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8"></div>
         </div>
     </section>
     
@@ -366,6 +287,7 @@
             </div>
         </div>
     </footer>
+    <script src="project-data.js"></script>
     <script>
         // --- 네비게이션바 스크롤 그림자 효과 ---
         const nav = document.querySelector('nav');
@@ -388,118 +310,137 @@
                 smartBackspace: true,
             });
         }
-        
-        // --- 스크롤 애니메이션 스크립트 ---
-        const revealElements = document.querySelectorAll('.scroll-reveal');
-        const observer = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    entry.target.classList.add('visible');
-                } else {
-                    // 화면에서 사라지면 'visible' 클래스를 제거하여 애니메이션이 다시 트리거되도록 함
-                    entry.target.classList.remove('visible');
-                }
-            });
-        }, {
-            threshold: 0.1
-        });
-        revealElements.forEach(element => {
-            observer.observe(element);
-        });
-
-        // --- 프로젝트 필터링 스크립트 ---
-        const filterContainer = document.querySelector('#project-filters');
-        const projectCards = document.querySelectorAll('#project-grid .project-card');
-
-        if (filterContainer) {
-            filterContainer.addEventListener('click', (e) => {
-                if (e.target.tagName !== 'BUTTON') return;
-
-                // 활성 버튼 스타일 변경
-                const activeBtn = filterContainer.querySelector('.active');
-                activeBtn.classList.remove('active');
-                e.target.classList.add('active');
-
-                const filter = e.target.dataset.filter;
-
-                projectCards.forEach(card => {
-                    const categories = card.dataset.category;
-                    if (filter === 'all' || categories.includes(filter)) {
-                        card.classList.remove('hidden');
-                    } else {
-                        card.classList.add('hidden');
-                    }
-                });
-            });
-        }
-
-        // --- 프로젝트 미리보기 모달 스크립트 ---
-        const modal = document.getElementById('project-modal');
-        const openModalBtns = document.querySelectorAll('.open-modal-btn');
-
-        openModalBtns.forEach(btn => {
-            btn.addEventListener('click', (e) => {
-                e.preventDefault();
-                // 모달 내용 동적 생성
-                const project = {
-                    title: btn.dataset.title,
-                    image: btn.dataset.image,
-                    description: btn.dataset.description,
-                    process: btn.dataset.process,
-                    tags: JSON.parse(btn.dataset.tags),
-                    timeline: btn.dataset.timeline,
-                    link: btn.dataset.link,
-                };
-
-                modal.innerHTML = `
-                    <div id="modal-content" class="bg-white rounded-lg shadow-2xl w-full max-w-4xl max-h-[90vh] overflow-y-auto relative transform scale-95">
-                        <button id="close-modal-btn" class="absolute top-4 right-4 text-gray-500 hover:text-gray-800 z-10 text-4xl leading-none">&times;</button>
-                        <img id="modal-image" src="${project.image}" alt="${project.title} image" class="w-full h-64 object-cover">
-                        <div class="p-8">
-                            <h2 id="modal-title" class="text-3xl font-bold mb-2">${project.title}</h2>
-                            <p id="modal-timeline" class="text-sm text-gray-500 mb-4">${project.timeline}</p>
-                            <div id="modal-tags" class="flex flex-wrap gap-2 mb-6">${project.tags.map(tag => `<span class="bg-gray-200 text-gray-800 text-xs font-medium px-2 py-1 rounded-full">${tag}</span>`).join('')}</div>
-                            <div class="space-y-6 text-gray-700 leading-relaxed">
-                                <div><h4 class="font-bold text-lg mb-2">Description</h4><p id="modal-description">${project.description}</p></div>
-                                <div><h4 class="font-bold text-lg mb-2">My Role & Process</h4><p id="modal-process">${project.process}</p></div>
-                            </div>
-                            <a id="modal-live-link" href="${project.link}" target="_blank" rel="noopener noreferrer" class="mt-8 inline-block bg-blue-600 text-white font-semibold px-6 py-3 rounded-md hover:bg-blue-700 transition-colors">Visit Website &rarr;</a>
-                        </div>
-                    </div>
-                `;
-
-                document.body.style.overflow = 'hidden';
-                modal.classList.remove('hidden');
-                modal.classList.add('flex');
-                setTimeout(() => {
-                    modal.classList.remove('opacity-0');
-                    modal.querySelector('#modal-content').classList.remove('scale-95');
-                }, 10);
-
-                modal.querySelector('#close-modal-btn').addEventListener('click', closeModal);
-            });
-        });
-
-        function closeModal() {
-            const modalContent = modal.querySelector('#modal-content');
-            modal.classList.add('opacity-0');
-            if(modalContent) modalContent.classList.add('scale-95');
-            setTimeout(() => {
-                modal.classList.add('hidden');
-                modal.classList.remove('flex');
-                modal.innerHTML = ''; // 모달 내용 비우기
-                document.body.style.overflow = 'auto';
-            }, 300);
-        }
-
-        modal.addEventListener('click', (e) => {
-            if (e.target === modal) closeModal();
-        });
-        document.addEventListener('keydown', (e) => {
-            if (e.key === 'Escape' && !modal.classList.contains('hidden')) closeModal();
-        });
 
         document.addEventListener('DOMContentLoaded', () => {
+            // --- 프로젝트 카드 동적 생성 ---
+            const projectGrid = document.getElementById('project-grid');
+            // index.html에서는 처음 3개의 프로젝트만 표시
+            const projectsToDisplay = projectData.slice(0, 3);
+
+            projectsToDisplay.forEach((p, index) => {
+                const cardHTML = `
+                    <a href="#" class="project-card group block bg-white rounded-lg shadow-lg overflow-hidden transform hover:-translate-y-2 transition-transform duration-300 hover:shadow-xl open-modal-btn scroll-reveal"
+                       data-category="${p.category}"
+                       data-title="${p.title}"
+                       data-image="${p.modal_image_src}"
+                       data-description="${p.modal_description}"
+                       data-process="${p.modal_process}"
+                       data-tags='${JSON.stringify(p.tags)}'
+                       data-timeline="${p.timeline}"
+                       data-link="${p.link}">
+                        <div class="relative overflow-hidden rounded-t-lg">
+                            <div class="absolute inset-0 bg-black bg-opacity-0 group-hover:bg-opacity-60 transition-all duration-300 flex items-center justify-center z-10 rounded-t-lg">
+                                <div class="text-white text-center opacity-0 group-hover:opacity-100 transition-opacity duration-300 transform translate-y-4 group-hover:translate-y-0">
+                                    <h3 class="text-xl font-bold">View Case</h3>
+                                    <p class="text-sm">자세한 내용을 확인하세요 &rarr;</p>
+                                </div>
+                            </div>
+                            <img src="${p.image_src}" alt="${p.image_alt}" class="w-full h-auto object-cover group-hover:scale-105 transition-transform duration-300">
+                        </div>
+                        <div class="p-6 flex flex-col">
+                            <h3 class="text-xl font-bold mb-2">${p.title}</h3>
+                            <p class="text-gray-600 text-sm mb-4 flex-grow">${p.short_description}</p>
+                            <div class="flex flex-wrap gap-2">
+                                ${p.display_tags.map(tag => `<span class="bg-gray-200 text-xs px-2 py-1 rounded-full">${tag}</span>`).join('')}
+                            </div>
+                        </div>
+                    </a>
+                `;
+                projectGrid.innerHTML += cardHTML;
+            });
+
+            // --- 동적으로 생성된 요소들에 대한 스크립트 초기화 ---
+            initializePageScripts();
+        });
+
+        function initializePageScripts() {
+            // --- 프로젝트 필터링 스크립트 ---
+            const filterContainer = document.querySelector('#project-filters');
+            const projectCards = document.querySelectorAll('#project-grid .project-card');
+            if (filterContainer) {
+                filterContainer.addEventListener('click', (e) => {
+                    if (e.target.tagName !== 'BUTTON') return;
+                    filterContainer.querySelector('.active').classList.remove('active');
+                    e.target.classList.add('active');
+                    const filter = e.target.dataset.filter;
+                    projectCards.forEach(card => {
+                        card.classList.toggle('hidden', !(filter === 'all' || card.dataset.category.includes(filter)));
+                    });
+                });
+            }
+
+            // --- GSAP 스크롤 애니메이션 스크립트 ---
+            gsap.registerPlugin(ScrollTrigger);
+            gsap.utils.toArray('.scroll-reveal').forEach(element => {
+                const delay = parseFloat(element.classList.contains('delay-100') ? 0.1 : 
+                                         element.classList.contains('delay-200') ? 0.2 : 
+                                         element.classList.contains('delay-300') ? 0.3 : 0);
+
+                gsap.fromTo(element, 
+                    { y: 20, opacity: 0 }, 
+                    {
+                        y: 0,
+                        opacity: 1,
+                        duration: 0.6,
+                        delay: delay,
+                        ease: 'power1.out',
+                        scrollTrigger: {
+                            trigger: element,
+                            start: 'top 90%',
+                            toggleActions: 'play none none reverse' // 화면에 보일 때 재생, 사라질 때 되돌리기
+                        }
+                    }
+                );
+            });
+
+            // --- 프로젝트 미리보기 모달 스크립트 ---
+            const modal = document.getElementById('project-modal');
+            const openModalBtns = document.querySelectorAll('.open-modal-btn');
+            openModalBtns.forEach(btn => {
+                btn.addEventListener('click', (e) => {
+                    e.preventDefault();
+                    const project = {
+                        title: btn.dataset.title,
+                        image: btn.dataset.image,
+                        description: btn.dataset.description,
+                        process: btn.dataset.process,
+                        tags: JSON.parse(btn.dataset.tags),
+                        timeline: btn.dataset.timeline,
+                        link: btn.dataset.link,
+                    }
+                    modal.innerHTML = `
+                        <div id="modal-content" class="bg-white rounded-lg shadow-2xl w-full max-w-4xl max-h-[90vh] overflow-y-auto relative transform scale-95">
+                            <button id="close-modal-btn" class="absolute top-4 right-4 text-gray-500 hover:text-gray-800 z-10 text-4xl leading-none">&times;</button>
+                            <img id="modal-image" src="${project.image}" alt="${project.title} image" class="w-full h-64 object-cover">
+                            <div class="p-8">
+                                <h2 id="modal-title" class="text-3xl font-bold mb-2">${project.title}</h2>
+                                <p id="modal-timeline" class="text-sm text-gray-500 mb-4">${project.timeline}</p>
+                                <div id="modal-tags" class="flex flex-wrap gap-2 mb-6">${project.tags.map(tag => `<span class="bg-gray-200 text-gray-800 text-xs font-medium px-2 py-1 rounded-full">${tag}</span>`).join('')}</div>
+                                <div class="space-y-6 text-gray-700 leading-relaxed">
+                                    <div><h4 class="font-bold text-lg mb-2">Description</h4><p id="modal-description">${project.description}</p></div>
+                                    <div><h4 class="font-bold text-lg mb-2">My Role & Process</h4><p id="modal-process">${project.process}</p></div>
+                                </div>
+                                <a id="modal-live-link" href="${project.link}" target="_blank" rel="noopener noreferrer" class="mt-8 inline-block bg-blue-600 text-white font-semibold px-6 py-3 rounded-md hover:bg-blue-700 transition-colors">Visit Website &rarr;</a>
+                            </div>
+                        </div>
+                    `;
+                    // 스크롤바 너비를 계산하여 레이아웃 밀림 방지
+                    const scrollbarWidth = window.innerWidth - document.documentElement.clientWidth;
+                    document.body.style.paddingRight = `${scrollbarWidth}px`;
+                    document.body.style.overflow = 'hidden';
+
+                    modal.classList.remove('hidden');
+                    modal.classList.add('flex');
+                    setTimeout(() => {
+                        modal.classList.remove('opacity-0');
+                        modal.querySelector('#modal-content').classList.remove('scale-95');
+                    }, 10);
+                    // 동적으로 생성된 닫기 버튼에 이벤트 리스너 추가
+                    modal.querySelector('#close-modal-btn').addEventListener('click', closeModal);
+                });
+            });
+
+            // --- 배경 아이콘 생성 스크립트 ---
             const container = document.getElementById('background-icons');
             if (!container) return;
             
@@ -532,6 +473,29 @@
                 svg.style.setProperty('--final-opacity', Math.random() * 0.4 + 0.3);
                 container.appendChild(svg);
             }
+        }
+
+        // --- 모달 닫기 이벤트 리스너 ---
+        const modal = document.getElementById('project-modal');
+        modal.addEventListener('click', (e) => {
+            // 모달의 어두운 배경(자기 자신)을 클릭했을 때만 닫기
+            if (e.target === modal) closeModal();
+        });
+        function closeModal() {
+            const modalContent = modal.querySelector('#modal-content');
+            modal.classList.add('opacity-0');
+            if(modalContent) modalContent.classList.add('scale-95');
+            setTimeout(() => {
+                modal.classList.add('hidden');
+                modal.classList.remove('flex');
+                modal.innerHTML = ''; // 모달 내용 비우기
+                document.body.style.overflow = 'auto';
+                document.body.style.paddingRight = ''; // padding-right 제거
+            }, 300);
+        }
+
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape' && !modal.classList.contains('hidden')) closeModal();
         });
     </script>
 </body>
