@@ -26,8 +26,8 @@
         .filter-btn.active { background-color: #3B82F6; color: white; }
         .filter-btn:not(.active) { background-color: #E5E7EB; color: #4B5563; }
     </style>
-</head>
-<body class="bg-[#F8F9FA] text-[#212529]">
+</head> 
+<body class="bg-[#F8F9FA] text-[#212529] flex flex-col min-h-screen">
 
     <!-- NAV BAR -->
     <nav class="sticky top-0 bg-[#F8F9FA]/80 backdrop-blur-sm border-b border-gray-200 z-50 transition-shadow duration-300">
@@ -49,7 +49,7 @@
     </nav>
 
     <!-- PROJECTS SECTION -->
-    <main id="projects" class="py-20 sm:py-24">
+    <main id="projects" class="py-20 sm:py-24 flex-grow">
         <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="text-center mb-16">
                 <h1 class="text-4xl sm:text-5xl font-extrabold tracking-tight scroll-reveal">All Projects</h1>
@@ -120,12 +120,12 @@
                                     <p class="text-sm">자세한 내용을 확인하세요 &rarr;</p>
                                 </div>
                             </div>
-                            <img src="${p.image_src}" alt="${p.image_alt}" class="w-full h-auto object-cover group-hover:scale-105 transition-transform duration-300">
+                            <img src="${p.image_src}" alt="${p.image_alt}" class="w-full h-48 object-cover group-hover:scale-105 transition-transform duration-300">
                         </div>
                         <div class="p-6 flex flex-col">
                             <h3 class="text-xl font-bold mb-2">${p.title}</h3>
                             <p class="text-gray-600 text-sm mb-4 flex-grow">${p.short_description}</p>
-                            <div class="flex flex-wrap gap-2">
+                            <div class="flex-wrap gap-2">
                                 ${p.display_tags.map(tag => `<span class="bg-gray-200 text-xs px-2 py-1 rounded-full">${tag}</span>`).join('')}
                             </div>
                         </div>
@@ -183,6 +183,7 @@
             openModalBtns.forEach(btn => {
                 btn.addEventListener('click', (e) => {
                     e.preventDefault();
+                    const category = btn.dataset.category;
                     const project = {
                         title: btn.dataset.title,
                         image: btn.dataset.image,
@@ -192,22 +193,33 @@
                         timeline: btn.dataset.timeline,
                         link: btn.dataset.link,
                     };
-                    modal.innerHTML = `
-                    <div id="modal-content" class="bg-white rounded-lg shadow-2xl w-full max-w-4xl max-h-[90vh] overflow-y-auto relative transform scale-95">
-                        <button id="close-modal-btn" class="absolute top-4 right-4 text-gray-500 hover:text-gray-800 z-10">&times;</button>
-                        <img id="modal-image" src="${project.image}" alt="${project.title} image" class="w-full h-64 object-cover">
-                        <div class="p-8">
-                            <h2 id="modal-title" class="text-3xl font-bold mb-2">${project.title}</h2>
-                            <p id="modal-timeline" class="text-sm text-gray-500 mb-4">${project.timeline}</p>
-                            <div id="modal-tags" class="flex flex-wrap gap-2 mb-6">${project.tags.map(tag => `<span class="bg-gray-200 text-gray-800 text-xs font-medium px-2 py-1 rounded-full">${tag}</span>`).join('')}</div>
-                            <div class="space-y-6 text-gray-700 leading-relaxed">
-                                <div><h4 class="font-bold text-lg mb-2">Description</h4><p id="modal-description">${project.description}</p></div>
-                                <div><h4 class="font-bold text-lg mb-2">My Role & Process</h4><p id="modal-process">${project.process}</p></div>
+
+                    if (category === 'photo') {
+                        // 'photo' 카테고리일 경우: 이미지만 보여주는 모달
+                        modal.innerHTML = `
+                            <div id="modal-content" class="relative w-lolute -top-8 right-0 text-white hover:text-gray-300 z-10 text-4xl leading-none">&times;</button>
+                                <img src="${project.image}" alt="${project.title} image" class="block max-w-full max-h-full object-contain">
+                        `;
+                    } else {
+                        // 다른 카테고리일 경우: 기존 상세 정보 모달
+                        modal.innerHTML = `
+                            <div id="modal-content" class="bg-white rounded-lg shadow-2xl w-full max-w-4xl max-h-[90vh] overflow-y-auto relative transform scale-95">
+                                <button id="close-modal-btn" class="absolute top-4 right-4 text-gray-500 hover:text-gray-800 z-10">&times;</button>
+                                <img id="modal-image" src="${project.image}" alt="${project.title} image" class="w-full h-64 object-cover">
+                                <div class="p-8">
+                                    <h2 id="modal-title" class="text-3xl font-bold mb-2">${project.title}</h2>
+                                    <p id="modal-timeline" class="text-sm text-gray-500 mb-4">${project.timeline}</p>
+                                    <div id="modal-tags" class="flex flex-wrap gap-2 mb-6">${project.tags.map(tag => `<span class="bg-gray-200 text-gray-800 text-xs font-medium px-2 py-1 rounded-full">${tag}</span>`).join('')}</div>
+                                    <div class="space-y-6 text-gray-700 leading-relaxed">
+                                        <div><h4 class="font-bold text-lg mb-2">Description</h4><p id="modal-description">${project.description}</p></div>
+                                        <div><h4 class="font-bold text-lg mb-2">My Role & Process</h4><p id="modal-process">${project.process}</p></div>
+                                    </div>
+                                    <a id="modal-live-link" href="${project.link}" target="_blank" rel="noopener noreferrer" class="mt-8 inline-block bg-blue-600 text-white font-semibold px-6 py-3 rounded-md hover:bg-blue-700 transition-colors">Visit Website &rarr;</a>
+                                </div>
                             </div>
-                            <a id="modal-live-link" href="${project.link}" target="_blank" rel="noopener noreferrer" class="mt-8 inline-block bg-blue-600 text-white font-semibold px-6 py-3 rounded-md hover:bg-blue-700 transition-colors">Visit Website &rarr;</a>
-                        </div>
-                    </div>
-                    `;
+                        `;
+                    }
+
                     // 스크롤바 너비를 계산하여 레이아웃 밀림 방지
                     const scrollbarWidth = window.innerWidth - document.documentElement.clientWidth;
                     document.body.style.paddingRight = `${scrollbarWidth}px`;
@@ -250,22 +262,7 @@
     </script>
 </body>
 </html>
-            modal.classList.add('opacity-0');
-            if (modalContent) modalContent.classList.add('scale-95');
-            setTimeout(() => {
-                modal.classList.add('hidden');
-                modal.classList.remove('flex');
-                modal.innerHTML = ''; // 모달 내용 비우기
-                document.body.style.overflow = 'auto';
-            }, 300);
-        }
 
-        modal.addEventListener('click', (e) => {
-            if (e.target === modal) closeModal();
-        });
-        document.addEventListener('keydown', (e) => {
-            if (e.key === 'Escape' && !modal.classList.contains('hidden')) closeModal();
-        });
     </script>
 </body>
 </html>
